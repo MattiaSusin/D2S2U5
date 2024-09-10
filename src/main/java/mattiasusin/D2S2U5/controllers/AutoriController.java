@@ -30,11 +30,11 @@ public class AutoriController {
 
     // 3. POST CREA UN NUOVO AUTORE
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.CREATED) // 201 CREATED
     private Autore createAutore(@RequestBody Autore body) {
         return autoreService.saveAutore(body);
     }
-    
+
     // 4. PUT MODIFICA LO SPECIFICO AUTORE
 
     // 5. DELETE CANCELLA LO SPECIFICO AUTORE
