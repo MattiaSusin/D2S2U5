@@ -39,5 +39,10 @@ public class AutoriController {
 
     // 5. DELETE CANCELLA LO SPECIFICO AUTORE
 
+    @DeleteMapping("/{autoreId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    private void findAutoreByIdAndDelete(@PathVariable int autoreId) {
+        autoreService.findByIdAndDelete(autoreId);
+    }
 
 }

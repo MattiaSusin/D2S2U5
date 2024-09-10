@@ -1,6 +1,7 @@
 package mattiasusin.D2S2U5.services;
 
 import mattiasusin.D2S2U5.entities.Autore;
+import mattiasusin.D2S2U5.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,11 +30,21 @@ public class AutoreService {
     // 3. SALVA
     public Autore saveAutore(Autore body) {
         Random rd = new Random();
-        body.setId(rd.nextInt(1, 10));
+        body.setId(rd.nextInt(1, 100));
         body.setEmail(rd.toString());
         body.setAvatar(rd.toString());
         body.setDataDiNascita(rd.nextInt());
         this.autoreList.add(body);
         return body;
+    }
+
+    // 5. DELETE
+    public void findByIdAndDelete(int autoreId) {
+        Autore found = null;
+        for (Autore autore : this.autoreList) {
+            if (autore.getId() == autoreId) found = autore;
+        }
+        if (found == null) throw new NotFoundException(autoreId);
+        this.autoreList.remove(found);
     }
 }
