@@ -1,6 +1,9 @@
 package mattiasusin.D2S2U5.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -8,12 +11,12 @@ import lombok.*;
 @NoArgsConstructor
 public class Autore {
 
-    @Setter(AccessLevel.NONE)
+
     private int id;
     private String nome;
     private String cognome;
     private String email;
-    private short dataDiNascita;
+    private int dataDiNascita;
     private String avatar;
 
     //TO STRING
