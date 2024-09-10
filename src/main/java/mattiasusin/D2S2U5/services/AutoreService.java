@@ -12,11 +12,12 @@ import java.util.Random;
 public class AutoreService {
     private List<Autore> autoreList = new ArrayList<>();
 
+    // 1. TROVA TUTTI
     public List<Autore> findAll() {
         return this.autoreList;
     }
 
-    // 2. findById
+    // 2. TROVA CON ID
     public Autore findById(int autoreId) throws ClassNotFoundException {
         Autore found = null;
         for (Autore autore : this.autoreList) {
@@ -27,7 +28,7 @@ public class AutoreService {
 
     }
 
-    // 3. SALVA
+    // 3. CREA
     public Autore saveAutore(Autore body) {
         Random rd = new Random();
         body.setId(rd.nextInt(1, 100));
@@ -36,6 +37,23 @@ public class AutoreService {
         body.setDataDiNascita(rd.nextInt());
         this.autoreList.add(body);
         return body;
+    }
+
+    // 4. TROVA CON ID E MODIFICA
+    public Autore findByIdAndUpdate(int autoreId, Autore updateAutore) {
+        Autore found = null;
+        for (Autore autore : this.autoreList) {
+            if (autore.getId() == autoreId) {
+                found = autore;
+                found.setNome(updateAutore.getNome());
+                found.setCognome(updateAutore.getCognome());
+                found.setEmail(updateAutore.getEmail());
+                found.setDataDiNascita(updateAutore.getDataDiNascita());
+                found.setAvatar(updateAutore.getAvatar());
+            }
+        }
+        if (found == null) throw new NotFoundException(autoreId);
+        return found;
     }
 
     // 5. DELETE

@@ -1,14 +1,15 @@
 package mattiasusin.D2S2U5.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class BlogPost {
-
-    @Setter(AccessLevel.NONE)
     private int id;
     private String categoria;
     private String titolo;
